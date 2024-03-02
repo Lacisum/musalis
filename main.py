@@ -1,4 +1,4 @@
-from music21 import note, pitch, scale, stream
+from music21 import interval, note, pitch, scale, stream
 
 from choice import pitchChoice
 
@@ -12,7 +12,7 @@ def main():
     minPitch, maxPitch = pitch.Pitch('C4'), pitch.Pitch('A5')
 
     # generate a melody
-    randPitches = pitchChoice.pitchesMaxLeapIsPerfectFourth(cMajorScale, minPitch, maxPitch)
+    randPitches = pitchChoice.pitchesUniformDistribution(cMajorScale, minPitch, maxPitch, interval.Interval('A4'))
     randNotes = [note.Note(pitch) for pitch in randPitches]
 
     # put the melody into a stream
