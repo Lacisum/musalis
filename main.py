@@ -11,11 +11,11 @@ def main():
     cMajorScale = scale.MajorScale('C')
     minPitch, maxPitch = pitch.Pitch('C4'), pitch.Pitch('A5')
 
-    # create a random list of notes
+    # generate a melody
     randPitches = pitchChoice.pitchesMaxLeapIsPerfectFourth(cMajorScale, minPitch, maxPitch)
     randNotes = [note.Note(pitch) for pitch in randPitches]
 
-    # put the list of notes into a stream
+    # put the melody into a stream
     myStream = stream.Stream()
     myStream.append(randNotes)
 
