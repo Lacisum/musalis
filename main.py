@@ -1,4 +1,4 @@
-from music21 import scale, note, stream
+from music21 import note, pitch, scale, stream
 
 from choice import pitchChoice
 
@@ -9,10 +9,10 @@ def main():
 
     # set the possible pitches
     cMajorScale = scale.MajorScale('C')
-    lowestPitch, highestPitch = 'C4', 'A5'
+    minPitch, maxPitch = pitch.Pitch('C4'), pitch.Pitch('A5')
 
     # create a random list of notes
-    randPitches = pitchChoice.pitchesUniformDistribution(cMajorScale, lowestPitch, highestPitch)
+    randPitches = pitchChoice.pitchesMaxLeapIsPerfectFourth(cMajorScale, minPitch, maxPitch)
     randNotes = [note.Note(pitch) for pitch in randPitches]
 
     # put the list of notes into a stream
