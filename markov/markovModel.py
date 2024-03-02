@@ -3,6 +3,8 @@ import random
 class MarkovModel():
 
     def __init__(self, states: set):
+        if len(states) != len(set(states)):
+            raise Exception('States must be unique')
         self.states = tuple(states)
         self.transition_matrix = dict()
         for row in states:
