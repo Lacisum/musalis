@@ -12,7 +12,7 @@ def main():
     possiblePitches = cMajorScale.getPitches('C4','A5')
 
     # create a random list of notes
-    randPitches = pitchChoice.generateRandomPitches(possiblePitches)
+    randPitches = pitchChoice.pitchesUniformDistribution(possiblePitches)
     randNotes = [note.Note(pitch) for pitch in randPitches]
 
     # put the list of notes into a stream
