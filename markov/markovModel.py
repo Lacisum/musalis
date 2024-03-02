@@ -2,8 +2,8 @@ import random
 
 class MarkovModel():
 
-    def __init__(self, states: tuple):
-        self.states = states
+    def __init__(self, states: set):
+        self.states = tuple(states)
         self.transition_matrix = dict()
         for row in states:
             self.transition_matrix[row] = dict()
