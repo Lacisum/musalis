@@ -1,5 +1,6 @@
 from music21 import scale, note, stream
-import random
+
+from choice import pitchChoice
 
 
 
@@ -11,7 +12,7 @@ def main():
     possiblePitches = cMajorScale.getPitches('C4','A5')
 
     # create a random list of notes
-    randPitches = random.choices(possiblePitches, k=50)
+    randPitches = pitchChoice.generateRandomPitches(possiblePitches)
     randNotes = [note.Note(pitch) for pitch in randPitches]
 
     # put the list of notes into a stream
