@@ -1,6 +1,6 @@
 import unittest
 
-from markov import *
+from markov.markovModel import MarkovModel
 
 
 class MarkovModelTest(unittest.TestCase):
