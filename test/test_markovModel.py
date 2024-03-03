@@ -10,7 +10,7 @@ class MarkovModelTest(unittest.TestCase):
 
 
     def setUp(self):
-        self.mm = MarkovModel({'A', 'B'})
+        self.mm = MarkovModel({'A', 'B'}, 1)
         self.mm.transition_matrix['A']['A'] = 0.
         self.mm.transition_matrix['A']['B'] = 1.
         self.mm.transition_matrix['B']['A'] = 1.
@@ -24,7 +24,7 @@ class MarkovModelTest(unittest.TestCase):
 
     def test_constructor_raises_exception_if_iterable_with_duplicates_is_passed_as_the_states(self):
         with self.assertRaises(Exception):
-            MarkovModel(('A', 'B', 'B'))
+            MarkovModel(('A', 'B', 'B'), 1)
 
 
     def test_next_works_with_the_right_probabilites(self):
