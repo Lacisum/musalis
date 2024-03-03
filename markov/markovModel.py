@@ -35,7 +35,7 @@ class MarkovModel():
         Returns a next state considering the previous states and the transition matrix.
 
         Parameters:
-            - pre_states: the previous states
+            - prev_states: the previous states
         
         Return:
             the next state
