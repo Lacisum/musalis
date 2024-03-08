@@ -1,1 +1,1 @@
-from .test_markovModel import *
+from .testMarkovModel import *
