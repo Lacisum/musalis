@@ -18,7 +18,3 @@ class Node():
             raise Exception('Successor must be a Node')
         self.successors.append(successor)
         self.weights.append(weight)
-
-
-    def set_weight(self, index: int):
-        pass
