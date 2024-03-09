@@ -9,33 +9,36 @@ class NodeTest(unittest.TestCase):
     '''
 
 
-    @classmethod
-    def setUpClass(cls):
-        cls.node = Node("ABC")
-
+    def setUp(self):
+        self.node1 = Node("ABC")
+        self.node2 = Node(('A', 2))
+        self.node1.add_successor(self.node2)
 
     def test_label_is_set_correctly(self):
-        self.assertEqual("ABC", self.node.label)
+        self.assertEqual(('A', 2), self.node2.label)
     
     def test_successors_are_set_correctly(self):
-        self.assertEqual([], self.node.successors)
+        self.assertEqual([], self.node2.successors)
     
     def test_weights_are_set_correctly(self):
-        self.assertEqual([], self.node.weights)
+        self.assertEqual([], self.node2.weights)
     
     def test_non_hashable_labels_are_forbidden(self):
         with self.assertRaises(Exception):
-            Node(['A', 'B', 'C'])
+            Node(['A', 'B'])
     
-    def test_can_add_successors(self):
-        successor1 = Node('BAA')
-        successor2 = Node('AAA')
-        self.assertEqual([], self.node.successors)
-        self.node.add_successor(successor1)
-        self.assertEqual([successor1], self.node.successors)
-        self.node.add_successor(successor2)
-        self.assertEqual([successor1, successor2], self.node.successors)
-
     def test_successors_must_be_nodes(self):
         with self.assertRaises(Exception):
-            self.node.add_successor(4)
+            self.node1.add_successor(4)
+    
+    def test_adding_successors_does_update_successors(self):
+        self.assertEqual([self.node2], self.node1.successors)
+        another_node = Node(3)
+        self.node1.add_successor(another_node)
+        self.assertEqual([self.node2, another_node], self.node1.successors)
+    
+    def test_adding_successors_does_update_weights(self):
+        self.assertEqual([1], self.node1.weights)
+        another_node = Node(3)
+        self.node1.add_successor(another_node, 2.7)
+        self.assertEqual([1, 2.7], self.node1.weights)
