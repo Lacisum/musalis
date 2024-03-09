@@ -1,6 +1,9 @@
 from typing import Hashable
 
+
+
 class Node():
+
 
     def __init__(self, label):
         if not isinstance(label, Hashable):
@@ -9,8 +12,13 @@ class Node():
         self.successors = []    # represent outgoing edges
         self.weights = []       # represent outgoing edges' weights
 
+
     def add_successor(self, successor: 'Node', weight=1):
-        pass
+        if not isinstance(successor, Node):
+            raise Exception('Successor must be a Node')
+        self.successors.append(successor)
+        self.weights.append(weight)
+
 
     def set_weight(self, index: int):
         pass
