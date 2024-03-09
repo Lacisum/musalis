@@ -1,33 +1,18 @@
-import itertools
 import random
 
 class MarkovModel():
 
-    def __init__(self, states: set, order: int):
+    def __init__(self, order: int):
         '''
         Builds a MarkovModel.
 
         Parameters:
-            - states: the set of states
             - order: the order of the Markov model
         '''
-        if len(states) != len(set(states)):
-            raise Exception('States must be unique')
         if order <= 0:
             raise Exception('Order of a Markov model must be greater than 0')
-        self.states = tuple(states)
         self.order = order
-        self.transition_matrix = dict()
-        permutations_with_repetitions = itertools.product(self.states, repeat=order+1)
-        for perm in permutations_with_repetitions:
-            tmp = self.transition_matrix
-            for i in range( len(perm) - 1):
-                state = perm[i]
-                if not state in tmp:
-                    tmp[state] = dict()
-                tmp = tmp[state]
-            last_state = perm[-1]
-            tmp[last_state] = 0.
+        self.graph = dict()
 
 
     def next(self, prev_states: list):

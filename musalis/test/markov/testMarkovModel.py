@@ -1,6 +1,6 @@
 import unittest
 
-from markov.markovModel import MarkovModel
+from musalis.markov.markovModel import MarkovModel
 
 
 class MarkovModelTest(unittest.TestCase):
