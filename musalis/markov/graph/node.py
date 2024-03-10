@@ -18,6 +18,12 @@ class Node():
         self.label = label
         self.successors = []    # List of nodes. Represent outgoing edges
         self.weights = []       # List of numbers (floats or ints). Represent outgoing edges' weights
+    
+
+    def __eq__(self, other):
+        if type(other) is type(self):
+            return self.label == other.label and self.successors == other.successors and self.weights == other.weights
+        return False
 
 
     def add_successor(self, successor: 'Node', weight=1):
