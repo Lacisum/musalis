@@ -26,7 +26,7 @@ class Node():
         return False
 
 
-    def add_successor(self, successor: 'Node', weight=1):
+    def add_successor(self, successor: 'Node', weight: int|float = 1):
         '''
         Creates an edge between this node and the given node.
         The edge gets the given weight (default weight is 1).
